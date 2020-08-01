@@ -7,7 +7,8 @@
 */public/build/
 
 # dependencies
-/node_modules
+node_modules
+src/node_modules/@sapper/
 
 # IDEs and editors
 /.idea
@@ -35,6 +36,9 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+
+cypress/screenshots/
+__sapper__/
 
 # System Files
 .DS_Store
