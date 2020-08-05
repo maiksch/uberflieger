@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"license": "MIT",
 	"scripts": {
-		"dev": "ts-node -r tsconfig-paths/register ./src/web/server.ts",
+		"dev": "nodemon",
 		"build": "tsc -p ./api"
 	},
 	"private": true,
@@ -22,6 +22,7 @@
 		"fp-ts": "^2.6.6",
 		"mime": "^2.4.6",
 		"morgan": "^1.10.0",
+		"nodemon": "^2.0.4",
 		"prettier": "^2.0.5",
 		"ts-node": "^8.10.2",
 		"tsconfig-paths": "^3.9.0",

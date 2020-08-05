@@ -1,6 +1,8 @@
 <script context="module">
 	export async function preload({ params, query }) {
-		const res = await this.fetch(`http://localhost:3000/lessons/1`);
+		const res = await this.fetch(
+			`http://localhost:3000/lessons/${params.lesson}`
+		);
 		const lesson = await res.json();
 		return { lesson };
 	}
@@ -31,7 +33,7 @@
 </style>
 
 <svelte:head>
-	<title>Uberflieger - {lesson.title}</title>
+	<title>{lesson.title}</title>
 </svelte:head>
 
 <h1>{lesson.title}</h1>

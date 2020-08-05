@@ -55,12 +55,5 @@
 				home
 			</a>
 		</li>
-		<li>
-			<a
-				aria-current={segment === 'lessons' ? 'page' : undefined}
-				href="lessons">
-				lessons
-			</a>
-		</li>
 	</ul>
 </nav>
