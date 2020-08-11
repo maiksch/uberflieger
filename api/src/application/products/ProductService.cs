@@ -1,24 +1,31 @@
 ﻿using Application.Products.GetOne;
-using Domain;
+using Microsoft.EntityFrameworkCore;
+using Persistence;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Application.Products
 {
     public class ProductService : IProductService
     {
-        public Task<GetOneProductResponse> GetOne(string identifier)
+        private readonly UberfliegerContext _context;
+
+        public ProductService(UberfliegerContext context)
         {
-            var product = new Product
+            _context = context;
+        }
+
+        public async Task<GetOneProductResponse> GetOne(string identifier)
+        {
+            var product = await _context.Products.Where(p => p.Identifier == identifier).SingleOrDefaultAsync();
+            if (product == null)
             {
-                Id = 1,
-                Identifier = identifier,
-                Title = "Outcome-based Leadership",
-                Description = "Im Outcome-based Leadership Programm lernst du, wie du nachhaltig Führungskompetenzen aufbaust und dich Schritt-für-Schritt zu einer erfolgreichen Führungskraft entwickelst. Dies ist ein \"Umsetzungsprogramm\", das dir dabei hilft, erstklassige Ergebnisse zu erzielen.",
-            };
+                return null;
+            }
 
             var result = GetOneProductResponse.FromProduct(product);
 
-            return Task.FromResult(result);
+            return result;
         }
     }
 }

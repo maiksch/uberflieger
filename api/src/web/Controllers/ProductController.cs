@@ -35,6 +35,10 @@ namespace Web.Controllers
         public async Task<IActionResult> Get(string identifier)
         {
             var result = await ProductService.GetOne(identifier);
+            if (result == null)
+            {
+                return NotFound();
+            }
             return Ok(result);
         }
 
