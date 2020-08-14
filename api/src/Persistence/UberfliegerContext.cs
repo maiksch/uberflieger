@@ -7,6 +7,7 @@ namespace Persistence
     public class UberfliegerContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
+        public DbSet<Module> Modules { get; set; }
 
         public UberfliegerContext(DbContextOptions<UberfliegerContext> options) : base(options)
         {
@@ -14,11 +15,11 @@ namespace Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasDefaultSchema("public");
-
             modelBuilder.UseIdentityAlwaysColumns();
 
             modelBuilder.ConfigureProduct();
+
+            modelBuilder.ConfigureModule();
         }
     }
 }
