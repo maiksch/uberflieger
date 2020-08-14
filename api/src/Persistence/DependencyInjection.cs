@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Persistence
 {
@@ -8,7 +9,14 @@ namespace Persistence
     {
         public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<UberfliegerContext>(options => options.UseNpgsql(configuration.GetConnectionString("Database")));
+            services.AddDbContextPool<UberfliegerContext>(options =>
+            {
+                var loggerFactory = LoggerFactory.Create(builder => builder.AddConsole());
+
+                options.UseLoggerFactory(loggerFactory)
+                       .EnableSensitiveDataLogging()
+                       .UseNpgsql(configuration.GetConnectionString("Database"));
+            });
         }
     }
 }
