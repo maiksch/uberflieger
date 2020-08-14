@@ -10,6 +10,8 @@ namespace Web
 {
     public class Startup
     {
+        private readonly string CorsPolicy = "CorsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -20,6 +22,13 @@ namespace Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+                });
+            });
             services.AddControllers();
             services.AddApplication();
             services.AddPersistence(Configuration);
@@ -37,6 +46,8 @@ namespace Web
 
             app.UseRouting();
 
+            app.UseCors();
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -44,9 +55,10 @@ namespace Web
                 endpoints.MapControllers();
             });
 
-            using var scope = app.ApplicationServices.CreateScope();
-            using var context = scope.ServiceProvider.GetService<UberfliegerContext>();
-            context.Database.EnsureCreated();
+            //using var scope = app.ApplicationServices.CreateScope();
+            //using var context = scope.ServiceProvider.GetService<UberfliegerContext>();
+            //context.Database.EnsureDeleted();
+            //context.Database.EnsureCreated();
         }
     }
 }
