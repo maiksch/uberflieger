@@ -1,9 +1,8 @@
 <script context="module">
+	import * as api from 'api';
+
 	export async function preload({ params, query }) {
-		const res = await this.fetch(
-			`http://localhost:3000/lessons/${params.lesson}`
-		);
-		const lesson = await res.json();
+		const lesson = await api.get(`lessons/${params.lesson}`);
 		return { lesson };
 	}
 </script>

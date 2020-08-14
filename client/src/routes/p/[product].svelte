@@ -1,9 +1,8 @@
 <script context="module">
+	import * as api from 'api';
+
 	export async function preload({ path, params, query }) {
-		const res = await this.fetch(
-			`http://localhost:3000/products/${params.product}`
-		);
-		const product = await res.json();
+		const product = await api.get(`products/${params.product}`);
 		return { product, path };
 	}
 </script>

@@ -1,9 +1,8 @@
 <script context="module">
+	import * as api from 'api';
+
 	export async function preload({ path, params, query }) {
-		const res = await this.fetch(
-			`http://localhost:3000/modules/${params.module}`
-		);
-		const module = await res.json();
+		const module = await api.get(`modules/${params.module}`);
 		return { module, path };
 	}
 </script>

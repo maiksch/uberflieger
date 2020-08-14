@@ -1,11 +1,11 @@
 <script>
 	import { onMount } from 'svelte';
+	import * as api from 'api';
 
 	let products = [];
 
 	onMount(async () => {
-		const res = await fetch(`http://localhost:3000/products`);
-		products = await res.json();
+		products = await api.get('products');
 	});
 </script>
 

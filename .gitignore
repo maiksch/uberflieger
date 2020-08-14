@@ -6,10 +6,6 @@
 /out-tsc
 */public/build/
 
-# dependencies
-node_modules
-src/node_modules/@sapper/
-
 # IDEs and editors
 /.idea
 .project
