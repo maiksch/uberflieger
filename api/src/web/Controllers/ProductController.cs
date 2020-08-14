@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Products;
-using Application.Products.GetOne;
+using Application.Products.Response;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Web.Controllers
 {
-    [Route("api/products")]
+    [Route("products")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -26,9 +26,8 @@ namespace Web.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = await ProductService.GetOne("outcome-based-leadership");
-            var list = new List<GetOneProductResponse> { result };
-            return Ok(list);
+            var result = await ProductService.GetMany();
+            return Ok(result);
         }
 
         [HttpGet("{identifier}")]
