@@ -25,7 +25,7 @@ namespace Persistence.Configurations
             // Seed
             modelBuilder.Entity<Module>().HasData(new
             {
-                ModuleId = 1,
+                Id = 1,
                 ProductId = 1,
                 Identifier = "module-1-persoenliches-wachstum",
                 Title = "Modul 1 - Persönliches Wachstum",

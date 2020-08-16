@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Application.Modules;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Products
 {
@@ -7,6 +8,7 @@ namespace Application.Products
         public static void AddApplication(this IServiceCollection services)
         {
             services.AddTransient<IProductService, ProductService>();
+            services.AddTransient<IModuleService, ModuleService>();
         }
     }
 }

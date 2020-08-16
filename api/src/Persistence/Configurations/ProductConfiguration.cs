@@ -30,7 +30,7 @@ namespace Persistence.Configurations
             // Seed
             modelBuilder.Entity<Product>().HasData(new
             {
-                ProductId = 1,
+                Id = 1,
                 Identifier = "outcome-based-leadership",
                 Title = "Outcome-based Leadership",
                 Description = "Im Outcome-based Leadership Programm lernst du, wie du nachhaltig Führungskompetenzen aufbaust und dich Schritt-für-Schritt zu einer erfolgreichen Führungskraft entwickelst. Dies ist ein \"Umsetzungsprogramm\", das dir dabei hilft, erstklassige Ergebnisse zu erzielen."

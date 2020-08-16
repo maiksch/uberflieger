@@ -20,6 +20,8 @@ namespace Persistence
             modelBuilder.ConfigureProduct();
 
             modelBuilder.ConfigureModule();
+
+            modelBuilder.ConfigureLesson();
         }
     }
 }

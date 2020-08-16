@@ -10,8 +10,6 @@ namespace Web
 {
     public class Startup
     {
-        private readonly string CorsPolicy = "CorsPolicy";
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;

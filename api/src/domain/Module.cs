@@ -4,7 +4,7 @@ namespace Domain
 {
     public class Module
     {
-        public int ModuleId { get; set; }
+        public int Id { get; set; }
         public int ProductId { get; set; }
         public string Identifier { get; set; }
         public string Title { get; set; }
