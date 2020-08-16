@@ -1,8 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 	import * as api from 'api';
+	import type { Product } from 'models';
 
-	let products = [];
+	let products: Product[] = [];
 
 	onMount(async () => {
 		products = await api.get('products');

@@ -1,15 +1,17 @@
 <script context="module">
 	import * as api from 'api';
 
-	export async function preload({ path, params, query }) {
+	export async function preload({ path, params }: any) {
 		const module = await api.get(`modules/${params.module}`);
 		return { module, path };
 	}
 </script>
 
 <script>
-	export let module;
-	export let path;
+	import type { Module } from 'models';
+
+	export let module: Module;
+	export let path: string;
 </script>
 
 <style>
@@ -41,7 +43,9 @@
 <ul>
 	{#each module.lessons as lesson}
 		<li>
-			<a rel="prefetch" href="{path}/lessons/{lesson.id}">{lesson.title}</a>
+			<a rel="prefetch" href="{path}/lessons/{lesson.lessonNo}">
+				{lesson.title}
+			</a>
 		</li>
 	{/each}
 </ul>

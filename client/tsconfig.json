@@ -1,0 +1,23 @@
+{
+	"compilerOptions": {
+		"baseUrl": "./src",
+		"paths": {
+			"models": ["models/index.ts"],
+			"components/*": ["components/*"]
+		},
+		"lib": ["DOM", "ES2017", "WebWorker"],
+		"target": "es2017",
+		"allowSyntheticDefaultImports": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"importsNotUsedAsValues": "error",
+		"isolatedModules": true,
+		"moduleResolution": "node",
+		"sourceMap": true,
+		"strict": true,
+		"types": ["svelte", "@sapper"],
+		"typeRoots": ["src/node_modules/@types"]
+	},
+	"include": ["src/**/*", "src/node_modules/**/*"],
+	"exclude": ["node_modules/*", "__sapper__/*", "static/*"]
+}

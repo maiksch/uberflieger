@@ -1,15 +1,17 @@
 <script context="module">
 	import * as api from 'api';
 
-	export async function preload({ path, params, query }) {
+	export async function preload({ path, params }: any) {
 		const product = await api.get(`products/${params.product}`);
 		return { product, path };
 	}
 </script>
 
 <script>
-	export let product;
-	export let path;
+	import type { Product } from 'models';
+
+	export let product: Product;
+	export let path: string;
 </script>
 
 <style>

@@ -1,14 +1,16 @@
 <script context="module">
 	import * as api from 'api';
 
-	export async function preload({ params, query }) {
+	export async function preload({ params }: any) {
 		const lesson = await api.get(`lessons/${params.lesson}`);
 		return { lesson };
 	}
 </script>
 
 <script>
-	export let lesson;
+	import type { Lesson } from 'models';
+
+	export let lesson: Lesson;
 </script>
 
 <style>
@@ -39,4 +41,5 @@
 
 <video crossorigin="anonymous" preload="auto" controls>
 	<source src="small.webm" type="video/webm" />
+	<track kind="captions" />
 </video>

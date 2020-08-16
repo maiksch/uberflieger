@@ -1,12 +1,13 @@
 <script>
-	export let status;
-	export let error;
+	export let status: number;
+	export let error: Error;
 
 	const dev = process.env.NODE_ENV === 'development';
 </script>
 
 <style>
-	h1, p {
+	h1,
+	p {
 		margin: 0 auto;
 	}
 
