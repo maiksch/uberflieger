@@ -1,4 +1,4 @@
-﻿using Application.Modules.Responses;
+﻿using Application.Modules.Vms;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using System.Linq;
@@ -15,12 +15,12 @@ namespace Application.Modules
             _context = context;
         }
 
-        public async Task<GetOneModuleResponse> GetOne(string identifier)
+        public async Task<ModuleDetailVm> GetOne(string identifier)
         {
             var module = await _context.Modules.Where(m => m.Identifier == identifier)
                                                .Include(m => m.Lessons)
                                                .SingleAsync();
-            return GetOneModuleResponse.FromModule(module);
+            return new ModuleDetailVm(module);
         }
     }
 }

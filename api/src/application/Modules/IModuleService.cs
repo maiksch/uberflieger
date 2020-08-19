@@ -1,10 +1,10 @@
-﻿using Application.Modules.Responses;
+﻿using Application.Modules.Vms;
 using System.Threading.Tasks;
 
 namespace Application.Modules
 {
     public interface IModuleService
     {
-        Task<GetOneModuleResponse> GetOne(string identifier);
+        Task<ModuleDetailVm> GetOne(string identifier);
     }
 }
