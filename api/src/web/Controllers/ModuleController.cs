@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Application.Lessons;
 using Application.Modules;
-using Application.Modules.Responses;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Web.Controllers
 {
@@ -13,15 +10,36 @@ namespace Web.Controllers
     public class ModuleController : ControllerBase
     {
         private readonly IModuleService _moduleService;
-        public ModuleController(IModuleService moduleService)
+        private readonly ILessonService _lessonService;
+
+        public ModuleController(IModuleService moduleService, ILessonService lessonService)
         {
             _moduleService = moduleService;
+            _lessonService = lessonService;
         }
 
         [HttpGet("{identifier}")]
-        public async Task<GetOneModuleResponse> Get(string identifier)
+        public async Task<IActionResult> Get(string identifier)
         {
-            return await _moduleService.GetOne(identifier);
+            var result = await _moduleService.GetOne(identifier);
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
+
+        [HttpGet("{identifier}/lesson/{lessonNo:int}")]
+        public async Task<IActionResult> GetLesson(string identifier, int lessonNo)
+        {
+            var result = await _lessonService.GetOne(identifier, lessonNo);
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
         }
 
         [HttpPost]

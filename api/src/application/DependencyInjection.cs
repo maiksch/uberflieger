@@ -1,4 +1,5 @@
-﻿using Application.Modules;
+﻿using Application.Lessons;
+using Application.Modules;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Products
@@ -9,6 +10,7 @@ namespace Application.Products
         {
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IModuleService, ModuleService>();
+            services.AddTransient<ILessonService, LessonService>();
         }
     }
 }

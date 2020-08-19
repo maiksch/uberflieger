@@ -2,7 +2,8 @@
 	import * as api from 'api';
 
 	export async function preload({ params }: any) {
-		const lesson = await api.get(`lessons/${params.lesson}`);
+		const url = `modules/${params.module}/lesson/${params.lesson}`;
+		const lesson = await api.get(url);
 		return { lesson };
 	}
 </script>
@@ -24,6 +25,10 @@
 		text-transform: uppercase;
 		font-weight: 700;
 		margin: 0 0 0.5em 0;
+	}
+
+	video {
+		width: 100%;
 	}
 
 	@media (min-width: 480px) {

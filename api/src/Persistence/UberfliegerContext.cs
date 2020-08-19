@@ -8,6 +8,7 @@ namespace Persistence
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Module> Modules { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
 
         public UberfliegerContext(DbContextOptions<UberfliegerContext> options) : base(options)
         {
