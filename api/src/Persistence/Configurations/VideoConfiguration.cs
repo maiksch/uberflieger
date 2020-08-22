@@ -24,9 +24,9 @@ namespace Persistence.Configurations
             modelBuilder.Entity<Video>().HasData(new
             {
                 Id = 1,
-                StorageId = "23d08787-9ce3-4fed-abd0-dcc0b259cbba",
-                FileType = "webm",
+                StorageId = "b147c9ca-420a-407c-aa36-ebf492992586",
+                FileType = "mp4",
             });
-        }
+        }   
     }
 }

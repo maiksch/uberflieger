@@ -20,12 +20,10 @@ namespace Persistence
             modelBuilder.UseIdentityAlwaysColumns();
 
             modelBuilder.ConfigureProduct();
-
             modelBuilder.ConfigureModule();
-
             modelBuilder.ConfigureLesson();
-
             modelBuilder.ConfigureVideo();
+            modelBuilder.ConfigureImage();
         }
     }
 }

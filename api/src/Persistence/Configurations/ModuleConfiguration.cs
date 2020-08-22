@@ -27,8 +27,22 @@ namespace Persistence.Configurations
             {
                 Id = 1,
                 ProductId = 1,
-                Identifier = "module-1-persoenliches-wachstum",
-                Title = "Modul 1 - Persönliches Wachstum",
+                Identifier = "einstieg",
+                Title = "Einstieg",
+            },
+            new
+            {
+                Id = 2,
+                ProductId = 1,
+                Identifier = "modul-1-personlichkeit-ergrunden",
+                Title = "Modul 1 - Persönlichkeit ergründen",
+            },
+            new
+            {
+                Id = 3,
+                ProductId = 1,
+                Identifier = "modul-2-ziele-und-roadmap-erarbeiten",
+                Title = "Modul 2 - Ziele & Roadmap erarbeiten",
             });
         }
     }

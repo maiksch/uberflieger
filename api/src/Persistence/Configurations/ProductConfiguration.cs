@@ -31,9 +31,10 @@ namespace Persistence.Configurations
             modelBuilder.Entity<Product>().HasData(new
             {
                 Id = 1,
-                Identifier = "outcome-based-leadership",
-                Title = "Outcome-based Leadership",
-                Description = "Im Outcome-based Leadership Programm lernst du, wie du nachhaltig Führungskompetenzen aufbaust und dich Schritt-für-Schritt zu einer erfolgreichen Führungskraft entwickelst. Dies ist ein \"Umsetzungsprogramm\", das dir dabei hilft, erstklassige Ergebnisse zu erzielen."
+                ThumbnailId = 1,
+                Identifier = "uberflieger",
+                Title = "Überflieger",
+                Description = "Herzlich willkommen! Das Überflieger-Programm richtet sich an ehrgeizige, ambitionierte Ingenieure, die nach beruflichen Erfolgen streben. In diesem Programm erhältst du vielseitige Inspiration und Hilfsmittel für deine persönliche und berufliche Entwicklung."
             });
         }
     }

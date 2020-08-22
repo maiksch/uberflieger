@@ -24,7 +24,15 @@ namespace Persistence.Configurations
                 ModuleId = 1,
                 VideoId = 1,
                 LessonNo = 1,
-                Title = "Lesson Nummer 1",
+                Title = "Herzlich willkommen",
+            },
+            new
+            {
+                Id = 2,
+                ModuleId = 1,
+                VideoId = 1,
+                LessonNo = 2,
+                Title = "Programmüberblick",
             });
         }
     }
