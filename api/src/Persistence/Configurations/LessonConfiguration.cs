@@ -9,11 +9,11 @@ namespace Persistence.Configurations
         {
             // Setup
             modelBuilder.Entity<Lesson>()
-                        .HasIndex(module => new { module.ModuleId, module.LessonNo })
+                        .HasIndex(lesson => new { lesson.ModuleId, lesson.LessonNo })
                         .IsUnique();
 
             modelBuilder.Entity<Lesson>()
-                        .Property(module => module.Title)
+                        .Property(lesson => lesson.Title)
                         .IsRequired()
                         .HasMaxLength(255);
 
@@ -22,6 +22,7 @@ namespace Persistence.Configurations
             {
                 Id = 1,
                 ModuleId = 1,
+                VideoId = 1,
                 LessonNo = 1,
                 Title = "Lesson Nummer 1",
             });

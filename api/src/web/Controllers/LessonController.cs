@@ -1,5 +1,6 @@
 ﻿using Application.Lessons;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Web.Controllers
 {
@@ -12,6 +13,18 @@ namespace Web.Controllers
         public LessonController(ILessonService lessonService)
         {
             _lessonService = lessonService;
+        }
+
+        [HttpGet("{id}/video")]
+        public async Task<IActionResult> Video(int id)
+        {
+            var (video, fileType) = await _lessonService.GetVideo(id);
+            if (video == null)
+            {
+                return NotFound();
+            }
+
+            return File(video, $"video/{fileType}", enableRangeProcessing: true);
         }
 
         // POST api/<LessonController>

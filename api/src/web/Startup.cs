@@ -28,7 +28,7 @@ namespace Web
                 });
             });
             services.AddControllers();
-            services.AddApplication();
+            services.AddApplication(Configuration);
             services.AddPersistence(Configuration);
         }
 

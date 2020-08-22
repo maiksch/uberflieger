@@ -9,6 +9,7 @@ namespace Persistence
         public DbSet<Product> Products { get; set; }
         public DbSet<Module> Modules { get; set; }
         public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<Video> Videos { get; set; }
 
         public UberfliegerContext(DbContextOptions<UberfliegerContext> options) : base(options)
         {
@@ -23,6 +24,8 @@ namespace Persistence
             modelBuilder.ConfigureModule();
 
             modelBuilder.ConfigureLesson();
+
+            modelBuilder.ConfigureVideo();
         }
     }
 }

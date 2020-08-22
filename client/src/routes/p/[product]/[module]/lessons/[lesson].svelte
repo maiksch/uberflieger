@@ -12,6 +12,7 @@
 	import type { Lesson } from 'models';
 
 	export let lesson: Lesson;
+	const video = `http://localhost:5000/lessons/${lesson.lessonNo}/video`;
 </script>
 
 <style>
@@ -45,6 +46,6 @@
 <h1>{lesson.title}</h1>
 
 <video crossorigin="anonymous" preload="auto" controls>
-	<source src="small.webm" type="video/webm" />
+	<source src={video} type={lesson.videoContentType} />
 	<track kind="captions" />
 </video>
