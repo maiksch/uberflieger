@@ -45,7 +45,11 @@
 
 <h1>{lesson.title}</h1>
 
-<video crossorigin="anonymous" preload="auto" controls>
+<video
+	crossorigin="anonymous"
+	preload="auto"
+	controls
+	controlsList="nodownload">
 	<source src={video} type={lesson.videoContentType} />
 	<track kind="captions" />
 </video>
