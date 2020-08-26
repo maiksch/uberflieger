@@ -22,6 +22,7 @@ namespace Application.Lessons
         public async Task<LessonDetailVm> GetOne(string moduleIdentifier, int lessonNo)
         {
             var lesson = await _context.Lessons.Include(l => l.Module)
+                                               .ThenInclude(m => m.Product)
                                                .Include(l => l.Video)
                                                .Where(l => l.Module.Identifier == moduleIdentifier && l.LessonNo == lessonNo)
                                                .SingleAsync();

@@ -1,10 +1,10 @@
 <script>
-	import Nav from '../components/Nav.svelte';
+	import Navbar from '../components/Nav/Navbar.svelte';
 
 	export let segment: string;
 </script>
 
-<style>
+<style global>
 	main {
 		position: relative;
 		max-width: 1200px;
@@ -14,7 +14,9 @@
 	}
 </style>
 
-<Nav {segment} />
+<header>
+	<Navbar />
+</header>
 
 <main>
 	<slot />

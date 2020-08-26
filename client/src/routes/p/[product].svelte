@@ -9,9 +9,14 @@
 
 <script>
 	import type { Product } from 'models';
+	import { breadcrumbs$ } from 'store';
+	import Button from '../../components/Button.svelte';
 
 	export let product: Product;
 	export let path: string;
+
+	breadcrumbs$.set([{ label: product.title, link: path }]);
+
 	const progress = 0.8;
 </script>
 
@@ -24,16 +29,12 @@
 	}
 
 	section {
-		background-color: white;
-		padding: 1em;
+		padding: 1.25rem;
+		background-color: #fff;
 	}
 
 	section + section {
-		margin-top: 2em;
-	}
-
-	.container {
-		display: flex;
+		margin-top: 1.25rem;
 	}
 
 	#left {
@@ -42,11 +43,6 @@
 
 	#thumbnail {
 		width: 33.333333%;
-		margin-left: 2em;
-	}
-
-	img {
-		width: 100%;
 	}
 
 	ul {
@@ -54,28 +50,44 @@
 		padding: 0;
 	}
 
-	.progress_title {
+	.flex {
+		display: flex;
+	}
+
+	.font-bold {
 		font-weight: bold;
 	}
 
-	.progress-bar {
+	.w-full {
 		width: 100%;
-		height: 1em;
 	}
 
-	.progress-bar > .fill {
-		background-color: #0ab3ea;
-		height: 100%;
+	.text-white {
+		color: #fff;
 	}
 
-	.progress-bar_percent {
-		color: white;
+	.fixed {
 		position: fixed;
 	}
 
-	button {
-		width: 100%;
-		padding: 1em;
+	.bg-blue-500 {
+		background-color: #4299e1;
+	}
+
+	.rounded {
+		border-radius: 0.25rem;
+	}
+
+	.h-full {
+		height: 100%;
+	}
+
+	.flex-col {
+		flex-direction: column;
+	}
+
+	.ml-12 {
+		margin-left: 3rem;
 	}
 </style>
 
@@ -85,15 +97,17 @@
 
 <h1>{product.title}</h1>
 
-<div class="container">
+<div class="flex">
 	<div id="left">
 		<section id="description">{product.description}</section>
 
 		<section id="progress">
-			<span class="progress_title">Fortschritt</span>
-			<div class="progress-bar">
-				<span class="progress-bar_percent">{progress * 100}%</span>
-				<div class="fill" style="width: {progress * 100}%" />
+			<span class="font-bold">Fortschritt</span>
+			<div class="w-full h-5">
+				<span class="fixed text-white">{progress * 100}%</span>
+				<div
+					class="bg-blue-500 h-full rounded"
+					style="width: {progress * 100}%" />
 			</div>
 		</section>
 
@@ -111,8 +125,8 @@
 		</section>
 	</div>
 
-	<div id="thumbnail">
-		<img src={product.thumbnail} alt={product.title} />
-		<button>Weiter schauen</button>
+	<div id="thumbnail" class="flex flex-col ml-12">
+		<img class="w-full" src={product.thumbnail} alt={product.title} />
+		<Button>Weiter schauen</Button>
 	</div>
 </div>

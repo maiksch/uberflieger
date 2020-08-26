@@ -2,8 +2,11 @@
 	import { onMount } from 'svelte';
 	import * as api from 'api';
 	import type { Product } from 'models';
+	import { breadcrumbs$ } from 'store';
 
 	let products: Product[] = [];
+
+	breadcrumbs$.set([]);
 
 	onMount(async () => {
 		products = await api.get('products');

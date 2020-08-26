@@ -9,18 +9,26 @@
 
 <script>
 	import type { Module } from 'models';
+	import { breadcrumbs$ } from 'store';
 
 	export let module: Module;
 	export let path: string;
+
+	breadcrumbs$.set([
+		{
+			label: module.product.title,
+			link: `/p/${module.product.identifier}`,
+		},
+		{
+			label: module.title,
+			link: path,
+		},
+	]);
 </script>
 
 <style>
 	h1 {
 		text-align: center;
-		margin: 0 auto;
-	}
-
-	h1 {
 		font-size: 2.8em;
 		text-transform: uppercase;
 		font-weight: 700;
