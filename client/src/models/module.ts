@@ -8,5 +8,6 @@ export interface Module {
 	product: {
 		identifier: string;
 		title: string;
+		thumbnail: string;
 	};
 }
