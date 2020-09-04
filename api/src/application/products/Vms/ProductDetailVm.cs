@@ -18,12 +18,12 @@ namespace Application.Products.Vms
         public string Thumbnail { get; set; }
         public List<ModuleDetailVm> Modules { get; set; }
 
-        public ProductDetailVm(Product product, string thumbnailUri)
+        public ProductDetailVm(Product product)
         {
             Identifier = product.Identifier;
             Title = product.Title;
             Description = product.Description;
-            Thumbnail = thumbnailUri;
+            Thumbnail = product.Thumbnail.Uri;
             Modules = product.Modules.Select(data =>
                 new ModuleDetailVm
                 {

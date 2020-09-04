@@ -37,7 +37,7 @@ namespace Application.Products
             var blobContainer = new BlobContainerClient(storageConnectionString, "thumbnails");
             var blob = blobContainer.GetBlobClient($"{product.Thumbnail.StorageId}.{product.Thumbnail.FileType}");
 
-            var result = new ProductDetailVm(product, blob.Uri.ToString());
+            var result = new ProductDetailVm(product);
 
             return result;
         }

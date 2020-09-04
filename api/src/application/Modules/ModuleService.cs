@@ -20,7 +20,9 @@ namespace Application.Modules
             var module = await _context.Modules.Where(m => m.Identifier == identifier)
                                                .Include(m => m.Lessons)
                                                .Include(m => m.Product)
+                                               .ThenInclude(p => p.Thumbnail)
                                                .SingleAsync();
+
             return new ModuleDetailVm(module);
         }
     }

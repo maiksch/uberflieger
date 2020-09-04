@@ -12,6 +12,7 @@ namespace Application.Lessons
     {
         public string Identifier { get; set; }
         public string Title { get; set; }
+        public string Thumbnail { get; set; }
     }
 
     public class LessonDetailVm
@@ -36,6 +37,7 @@ namespace Application.Lessons
             {
                 Identifier = lesson.Module.Product.Identifier,
                 Title = lesson.Module.Product.Title,
+                Thumbnail = lesson.Module.Product.Thumbnail.Uri,
             };
         }
     }

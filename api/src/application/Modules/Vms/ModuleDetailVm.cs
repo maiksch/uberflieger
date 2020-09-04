@@ -15,6 +15,7 @@ namespace Application.Modules.Vms
     {
         public string Identifier { get; set; }
         public string Title { get; set; }
+        public string Thumbnail { get; set; }
     }
 
     public class ModuleDetailVm
@@ -40,6 +41,7 @@ namespace Application.Modules.Vms
             {
                 Identifier = module.Product.Identifier,
                 Title = module.Product.Title,
+                Thumbnail = module.Product.Thumbnail.Uri,
             };
         }
     }

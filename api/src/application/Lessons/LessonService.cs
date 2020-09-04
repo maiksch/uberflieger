@@ -23,6 +23,7 @@ namespace Application.Lessons
         {
             var lesson = await _context.Lessons.Include(l => l.Module)
                                                .ThenInclude(m => m.Product)
+                                               .ThenInclude(p => p.Thumbnail)
                                                .Include(l => l.Video)
                                                .Where(l => l.Module.Identifier == moduleIdentifier && l.LessonNo == lessonNo)
                                                .SingleAsync();
