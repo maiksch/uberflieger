@@ -5,6 +5,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Persistence;
+using HotChocolate;
+using HotChocolate.AspNetCore;
+using Web.GraphQL.Types;
+using HotChocolate.Execution.Configuration;
+using HotChocolate.AspNetCore.Voyager;
 
 namespace Web
 {
@@ -27,9 +32,25 @@ namespace Web
                     builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
                 });
             });
+
             services.AddControllers();
+
             services.AddApplication(Configuration);
+
             services.AddPersistence(Configuration);
+
+            services.AddGraphQL(sp => 
+                SchemaBuilder.New()
+                             .AddQueryType<QueryType>()
+                             .AddType<ProductType>()
+                             .AddType<ModuleType>()
+                             .AddType<LessonType>()
+                             .AddType<ImageType>()
+                             .AddType<VideoType>()
+                             .Create(),
+                // to fix System.InvalidOperationException
+                new QueryExecutionOptions { ForceSerialExecution = true }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,21 +58,22 @@ namespace Web
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app
+                    .UseDeveloperExceptionPage()
+                    .UsePlayground()
+                    .UseVoyager();
             }
 
-            //app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseCors();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app
+                //.UseHttpsRedirection()
+                .UseRouting()
+                .UseCors()
+                .UseAuthorization()
+                .UseGraphQL("/graphql")
+                .UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
 
             //using var scope = app.ApplicationServices.CreateScope();
             //using var context = scope.ServiceProvider.GetService<UberfliegerContext>();
